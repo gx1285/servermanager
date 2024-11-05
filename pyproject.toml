@@ -1,0 +1,51 @@
+[project]
+name = "servermanager"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "gx1285", email = "gx1285.git@outlook.jp" }
+]
+dependencies = [
+    "discord.py @ git+https://github.com/Rapptz/discord.py@af75985730528fa76f9949ea768ae90fd2a50c75",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "mypy>=1.13.0",
+    "ruff>=0.7.2",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+
+[tool.mypy]
+strict = true
+ignore_missing_imports = true
+disallow_untyped_decorators = false
+disallow_untyped_calls = false
+
+[tool.ruff]
+select = [
+    "F", 
+    "E", 
+    "W", 
+    "I", 
+    "D", 
+]
+ignore = []
+line-length = 88
+
+extend-ignore = []
+[tool.rye.scripts]
+dev = { cmd = "python -m src", env-file = ".env" }
